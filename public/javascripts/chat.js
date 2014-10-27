@@ -3,6 +3,7 @@
 
   ChatApp.Chat = function (socket) {
     this.socket = socket;
+    this.room = null;
     this.allUsers = [];
   };
 
@@ -11,17 +12,10 @@
   };
 
   ChatApp.Chat.prototype.sendNicknameRequest = function (nickname) {
-    console.log("2")
     this.socket.emit("nicknameChangeRequest", { text: nickname });
   };
 
-  // ChatApp.Chat.prototype.getMessage = function () {
-//     return $("input").text();
-//   }
-//
-//   ChatApp.Chat.prototype.postMessage = function () {
-//     var li = '<li>' + message;
-//     $("ul.messages").prepend(li);
-//   };
-
+  ChatApp.Chat.prototype.joinRoomRequest = function (room) {
+    this.socket.emit("joinRoomRequest", { room: room });
+  };
 })();

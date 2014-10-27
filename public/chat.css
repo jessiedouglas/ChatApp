@@ -1,0 +1,143 @@
+/* RESET */
+
+html, body, head, section, button, h1, h3, form, input, textarea, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-decoration: none;
+  background: transparent;
+  font: inherit;
+  list-style: none;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: sans-serif;
+  background: lightblue;
+  padding: 30px;
+}
+
+input, textarea {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+
+/* Nickname */
+
+.name {
+  padding: 20px 20px 50px 20px;
+}
+
+.name > button {
+  font-size: 13px;
+  margin: 5px;
+  text-decoration: underline;
+}
+
+.name > button:hover {
+  font-weight: bold;
+}
+
+.name > h1 {
+  margin: 20px 0;
+}
+
+/* All Messages */
+div.all-messages {
+  width: 50%;
+  min-width: 400px;
+  float: left;
+}
+
+section.all-messages {
+  float: right;
+}
+
+section.all-messages > h1 {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 5-x;
+}
+
+.new-message {
+  clear: both;
+  padding: 20px;
+  background: white;
+  margin: 20px;
+  width: 225px;
+  border-radius: 5px;
+  border: 2px solid gray;
+}
+
+.new-message > h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.messages {
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 360px;
+  height: 360px;
+  background: white;
+  overflow: auto;
+}
+
+.messages li {
+  margin-bottom: 5px
+  ;
+}
+
+.messages li span {
+  font-weight: bold;
+}
+
+.send-message > button {
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 5px 7px;
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.send-message > button:hover {
+  background: gray;
+  border: 2px solid black;
+  color: lightblue;
+}
+
+/* Users */
+
+.all-users {
+  width: 50%;
+  float: right;
+  padding: 50px;
+  margin: 0 -100px;
+}
+
+.all-users h3 {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+}
+
+
+.all-users li {
+  margin: 5px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.all-rooms {
+  margin-top: 30px;
+}
+
+/*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.*/

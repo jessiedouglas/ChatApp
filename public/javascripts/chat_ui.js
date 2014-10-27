@@ -12,16 +12,22 @@
     }
 
     var postMessage = function (data) {
-      var li = '<li>' + data.nickname + " says: " + data.text;
+      var li = '<li><span>' + data.nickname + " says:</span> " + data.text;
       $("ul.messages").append(li);
-      $('textarea').val('');
+      if (data.text === $('textarea').val()) {
+        $('textarea').val('');
+      }
     };
 
     $("form button").on("click", function (event) {
       event.preventDefault();
       var message = getMessage();
       if (message[0] === "/") {
-        newChat.sendNicknameRequest(message.slice(6));
+        if (message.slice(1, 5) === "nick") {
+          newChat.sendNicknameRequest(message.slice(6));
+        } else {
+          newChat.joinRoomRequest(message.slice(6));
+        }
       } else {
         newChat.sendMessage(message);
       }
@@ -33,21 +39,19 @@
     };
 
     $(".name").on("click", ".get-name-change", function (event) {
-      console.log("0");
       var newNameInput = '<label>Nickname: <input type="text"></input></label>'
       $(".name").html(newNameInput);
-      $(".name").append('<button class="name-change">Submit');
+      $(".name").append('<button class="name-change">Submit</button>');
     });
 
     $(".name").on("click", ".name-change", function (event) {
-      console.log("1");
       var nickname = $(".name input").val();
       newChat.sendNicknameRequest(nickname);
     });
 
     var resetNickname = function (event) {
       if (event.success) {
-        $(".name").html('<button class="get-name-change"');
+        $(".name").html('<button class="get-name-change">Change nickname');
         setNickname(event);
         $("textarea").val('');
       } else {
@@ -56,7 +60,6 @@
     };
 
     var addUser = function (event) {
-      console.log(newChat.allUsers);
       if (newChat.allUsers.indexOf(event.name) === -1) {
         newChat.allUsers.push(event.name);
         $(".users").append("<li>" + event.name);
@@ -64,14 +67,26 @@
     };
 
     var showAllUsers = function (event) {
-      console.log("hi");
-      console.log(event.allUsers);
       newChat.allUsers = event.allUsers;
       $(".users").empty();
       event.allUsers.forEach(function (user) {
-        console.log(user);
         $(".users").append("<li>" + user);
       });
+    };
+
+    var joinRoom = function (event) {
+      var room = event.room;
+      $(".room > span").html(room);
+      $(".messages").empty();
+      $("#message").val('')
+      updateRooms(event.allRooms);
+    }
+
+    var updateRooms = function (rooms) {
+      $(".rooms").empty();
+      rooms.forEach(function (room) {
+        $(".rooms").append("<li>" + room);
+      })
     };
 
     socket.on("nicknameNotification", setNickname);
@@ -79,6 +94,7 @@
     socket.on('nicknameChangeResult', resetNickname);
     socket.on("newUser", addUser);
     socket.on("allUsersNotification", showAllUsers);
+    socket.on("joinRoomResponse", joinRoom);
   };
 
 })();

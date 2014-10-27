@@ -4,30 +4,42 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/chat.js"></script>
     <script src="javascripts/chat_ui.js"></script>
+    <link rel="stylesheet" href="chat.css">
   </head>
   <body>
     <section class="name">
       <button class="get-name-change">Change nickname</button>
+      <h1 class="room">In room: <span>lobby</span></h1>
     </section>
 
-    <section>
-      <h1>Messages</h1>
-      <ul class="messages"></ul>
-    </section>
+    <div class="all-messages">
 
-    <section>
-      <h1>New Message</h1>
-      <form class="send-message">
-        <label for="message">Message:</label>
-        <textarea id="message" name="contents"></textarea>
+      <section class="all-messages">
+        <h1>Messages</h1>
+        <ul class="messages"></ul>
 
-        <button>Submit</button>
-      </form>
-    </section>
 
-    <section>
+
+        <section class="new-message">
+          <h1>New Message</h1>
+          <form class="send-message">
+            <label for="message">Message:</label>
+            <textarea id="message" name="contents"></textarea>
+
+            <button>Submit</button>
+          </form>
+        </section>
+      </section>
+    </div>
+
+    <section class="all-users">
       <h3>Users</h3>
       <ul class="users"></ul>
+
+      <div class="all-rooms">
+        <h3>Rooms</h3>
+        <ul class="rooms"></ul>
+      </div>
     </section>
   </body>
 
