@@ -3,10 +3,16 @@
 
   ChatApp.Chat = function (socket) {
     this.socket = socket;
+    this.allUsers = [];
   };
 
   ChatApp.Chat.prototype.sendMessage = function (message) {
     this.socket.emit("message", { text: message });
+  };
+
+  ChatApp.Chat.prototype.sendNicknameRequest = function (nickname) {
+    console.log("2")
+    this.socket.emit("nicknameChangeRequest", { text: nickname });
   };
 
   // ChatApp.Chat.prototype.getMessage = function () {
