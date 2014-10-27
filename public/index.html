@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascripts/chat.js"></script>
+    <script src="javascripts/chat_ui.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1>Messages</h1>
+      <ul class="messages"></ul>
+    </section>
+
+    <section>
+      <h1>New Message</h1>
+      <form class="send-message">
+        <label for="message">Message:</label>
+        <textarea id="message" name="contents"></textarea>
+
+        <button>Submit</button>
+      </form>
+    </section>
+  </body>
+
+  <script>
+    $(ChatApp.startThings);
+  </script>
+</html>
